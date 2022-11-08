@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+        <RootNamespace>IoCore.SharedReadKernel</RootNamespace>
+        <LangVersion>7.3</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.30" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.30" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.30" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\TestApp.BuildingBlocks.Infrastructure\TestApp.BuildingBlocks.Infrastructure.csproj" />
+      <ProjectReference Include="..\TestApp.BuildingBlocks.Module\TestApp.BuildingBlocks.Module.csproj" />
+    </ItemGroup>
+
+</Project>

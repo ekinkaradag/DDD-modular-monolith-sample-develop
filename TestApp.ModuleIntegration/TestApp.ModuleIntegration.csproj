@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>7.3</LangVersion>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <Nullable>disable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FluentValidation" Version="11.2.2" />
+      <PackageReference Include="MediatR" Version="9.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.30" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\TestApp.BuildingBlocks.Application\TestApp.BuildingBlocks.Application.csproj" />
+      <ProjectReference Include="..\TestApp.BuildingBlocks.Domain\TestApp.BuildingBlocks.Domain.csproj" />
+      <ProjectReference Include="..\TestApp.BuildingBlocks.Infrastructure\TestApp.BuildingBlocks.Infrastructure.csproj" />
+      <ProjectReference Include="..\TestApp.BuildingBlocks.Module\TestApp.BuildingBlocks.Module.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>default</LangVersion>
+        <Nullable>disable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+            <_Parameter1>$(AssemblyName).UnitTests</_Parameter1>
+        </AssemblyAttribute>
+        <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+            <_Parameter1>$(AssemblyName).IntegrationTests</_Parameter1>
+        </AssemblyAttribute>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\TestApp.BuildingBlocks.Application\TestApp.BuildingBlocks.Application.csproj" />
+      <ProjectReference Include="..\TestApp.BuildingBlocks.Domain\TestApp.BuildingBlocks.Domain.csproj" />
+      <ProjectReference Include="..\TestApp.BuildingBlocks.Infrastructure\TestApp.BuildingBlocks.Infrastructure.csproj" />
+      <ProjectReference Include="..\TestApp.BuildingBlocks.Module\TestApp.BuildingBlocks.Module.csproj" />
+      <ProjectReference Include="..\TestApp.DataAccess.SharedReadKernel\TestApp.DataAccess.SharedReadKernel.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="10.1.1" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.30" />
+    </ItemGroup>
+
+</Project>
