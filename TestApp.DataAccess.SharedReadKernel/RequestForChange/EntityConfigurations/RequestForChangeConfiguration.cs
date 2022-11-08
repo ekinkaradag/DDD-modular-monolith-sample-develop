@@ -8,7 +8,7 @@ namespace IoCore.SharedReadKernel.RequestForChange.EntityConfigurations
     {
         protected override void ConfigureCore(EntityTypeBuilder<RequestForChange> builder)
         {
-            builder.ToTable("RequestForChange", "rfc");
+            builder.ToTable("RequestForChange", "dbo");
         }
     }
 }

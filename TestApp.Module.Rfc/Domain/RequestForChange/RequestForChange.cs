@@ -10,6 +10,7 @@ namespace TestApp.Module.Rfc.Domain.RequestForChange
         private const string WithDrawn = "WITHDRAWN";
         private const string Draft = "DRAFT";
         private const string InProgress = "INPROGRESS";
+        private const string Completed = "COMPLETED";
 
         public string Key { get; }
         public string Title { get; }
@@ -49,7 +50,7 @@ namespace TestApp.Module.Rfc.Domain.RequestForChange
         
             Status = InProgress;
         
-            AddDomainEvent(new RequestForChangeWithdrawnEvent(Key));
+            AddDomainEvent(new RequestForChangeStartedEvent(Key));
         }
 
         public void WithDraw()
@@ -59,6 +60,15 @@ namespace TestApp.Module.Rfc.Domain.RequestForChange
             Status = WithDrawn;
         
             AddDomainEvent(new RequestForChangeWithdrawnEvent(Key));
+        }
+        
+        public void Complete()
+        {
+            CheckRule(new RequestForChangeCanOnlyBeCompletedWhenInProgressRule(Status));
+        
+            Status = Completed;
+        
+            AddDomainEvent(new RequestForChangeCompletedEvent(Key));
         }
     }
 }

@@ -20,6 +20,7 @@
       <ProjectReference Include="..\TestApp.BuildingBlocks.Domain\TestApp.BuildingBlocks.Domain.csproj" />
       <ProjectReference Include="..\TestApp.DataAccess.SharedReadKernel\TestApp.DataAccess.SharedReadKernel.csproj" />
       <ProjectReference Include="..\TestApp.Module.Rfc\TestApp.Module.Rfc.csproj" />
+      <ProjectReference Include="..\TestApp.Module.Product\TestApp.Module.Product.csproj" />
       <ProjectReference Include="..\TestApp.ModuleIntegration\TestApp.ModuleIntegration.csproj" />
     </ItemGroup>
 

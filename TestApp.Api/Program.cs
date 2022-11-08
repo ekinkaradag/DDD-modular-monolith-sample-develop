@@ -64,10 +64,12 @@ app.UseAuthorization();
 app.MapControllers();
 
 var initializers = app.Services.GetAutofacRoot().Resolve<IEnumerable<IModuleInitializer>>();
-
+var databaseAlreadyCleared = false;
 foreach (var initializer in initializers)
 {
-    await initializer.Run();
+    var success = await initializer.Run(databaseAlreadyCleared);
+    if (success)
+        databaseAlreadyCleared = true;
 }
 
 app.Run();

@@ -4,6 +4,6 @@ namespace TestApp.BuildingBlocks.Module
 {
     public interface IModuleInitializer
     {
-        Task Run();
+        Task<bool> Run(bool databaseAlreadyCleared);
     }
 }

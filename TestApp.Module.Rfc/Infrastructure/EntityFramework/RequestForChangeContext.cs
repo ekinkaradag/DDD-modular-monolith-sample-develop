@@ -14,7 +14,7 @@ namespace TestApp.Module.Rfc.Infrastructure.EntityFramework
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasDefaultSchema("rfc");
+            modelBuilder.HasDefaultSchema("dbo");
             modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
         }
     }

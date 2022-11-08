@@ -48,6 +48,16 @@ namespace TestApp.Module.Rfc.UnitTests
 
             withDrawRfc.Should().Throw<BusinessRuleValidationException>();
         }
+        
+        [Fact]
+        public void New_RFC_cannot_be_completed()
+        {
+            var rfc = CreateRfc();
+
+            var completeRfc = () => rfc.Complete();
+
+            completeRfc.Should().Throw<BusinessRuleValidationException>();
+        }
     
         [Fact]
         public void InProgress_RFC_cannot_be_started_again()
@@ -70,6 +80,17 @@ namespace TestApp.Module.Rfc.UnitTests
 
             withDrawRfc.Should().NotThrow();
         }
+        
+        [Fact]
+        public void InProgress_RFC_can_be_completed()
+        {
+            var rfc = CreateRfc();
+            rfc.Start();
+
+            var withDrawRfc = () => rfc.Complete();
+
+            withDrawRfc.Should().NotThrow();
+        }
     
         [Fact]
         public void Withdrawn_RFC_cannot_be_withdrawn_again()
@@ -78,9 +99,57 @@ namespace TestApp.Module.Rfc.UnitTests
             rfc.Start();
             rfc.WithDraw();
 
-            var startRfc = () => rfc.WithDraw();
+            var withDrawRfc = () => rfc.WithDraw();
 
-            startRfc.Should().Throw<BusinessRuleValidationException>();
+            withDrawRfc.Should().Throw<BusinessRuleValidationException>();
+        }
+        
+        [Fact]
+        public void Withdrawn_RFC_cannot_be_completed()
+        {
+            var rfc = CreateRfc();
+            rfc.Start();
+            rfc.WithDraw();
+
+            var completedRfc = () => rfc.Complete();
+
+            completedRfc.Should().Throw<BusinessRuleValidationException>();
+        }
+        
+        [Fact]
+        public void Completed_RFC_cannot_be_completed_again()
+        {
+            var rfc = CreateRfc();
+            rfc.Start();
+            rfc.Complete();
+
+            var completeRfc = () => rfc.Complete();
+
+            completeRfc.Should().Throw<BusinessRuleValidationException>();
+        }
+        
+        [Fact]
+        public void Completed_RFC_cannot_be_started()
+        {
+            var rfc = CreateRfc();
+            rfc.Start();
+            rfc.Complete();
+
+            var completeRfc = () => rfc.Start();
+
+            completeRfc.Should().Throw<BusinessRuleValidationException>();
+        }
+        
+        [Fact]
+        public void Completed_RFC_cannot_be_withdrawn()
+        {
+            var rfc = CreateRfc();
+            rfc.Start();
+            rfc.Complete();
+
+            var withdrawnRfc = () => rfc.WithDraw();
+
+            withdrawnRfc.Should().Throw<BusinessRuleValidationException>();
         }
 
         private static RequestForChange CreateRfc()
